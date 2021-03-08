@@ -87,9 +87,11 @@ class CleanerAgent extends Agent {
         let action = this.table[viewKey];
 
         let position = 0;
+
         while(true){
             let new_X = this.x;
             let new_Y = this.y;
+
             if(action == "LEFT"){
                 new_X = new_X-1;
                 position = 0;
@@ -113,12 +115,10 @@ class CleanerAgent extends Agent {
             }
 
             if(this.repeat(new_X,new_Y)){
-                console.log("Se repite: "+new_X+","+new_Y)
                 this.perception[position] = 1;
                 viewKey = this.perception.join();
                 action = this.table[viewKey]
             }else{
-                console.log("No se repite: "+new_X+","+new_Y)
                 this.x = new_X;
                 this.y = new_Y;
                 this.mapPosition.push({
